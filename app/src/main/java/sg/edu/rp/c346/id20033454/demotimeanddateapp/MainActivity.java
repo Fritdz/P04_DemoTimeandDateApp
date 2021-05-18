@@ -34,8 +34,18 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                String hour=tp.getCurrentHour().toString();
-                String minute=tp.getCurrentMinute().toString();
+                String hour = "";
+                if (tp.getCurrentHour() <10){
+                    hour = "0" + tp.getCurrentHour();
+                } else {
+                    hour += tp.getCurrentHour();
+                }
+                String minute = "";
+                if (tp.getCurrentMinute() <10){
+                    minute = "0" + tp.getCurrentMinute();
+                } else {
+                    minute += tp.getCurrentMinute();
+                }
                 String output="The time is " + hour + ":" + minute;
                 tvDisplay.setText(output);
             }
@@ -45,11 +55,22 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                int day = dp.getDayOfMonth();
-                int month = dp.getMonth();
+                String day = "";
+                if (dp.getDayOfMonth() <10){
+                    day = "0" + dp.getDayOfMonth();
+                } else {
+                    day += dp.getDayOfMonth();
+                }
+                int monthtest = dp.getMonth()+1;
+                String month = "";
+                if (monthtest <10){
+                    month = "0" + monthtest;
+                } else {
+                    month += monthtest;
+                }
                 int year = dp.getYear();
 
-                String output = String.format("Date is %d/%d/%d", day, month, year);
+                String output = String.format("Date is %s/%s/%d", day, month, year);
                 tvDisplay.setText(output);
             }
         });
